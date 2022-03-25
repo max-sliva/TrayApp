@@ -51,7 +51,7 @@ fun createGUI() {
             try { //тут секция с try...catch для работы с портом
                 serialPort!!.openPort() //открываем порт
                 //задаем параметры порта, 9600 - скорость, такую же нужно задать для Serial.begin в Arduino
-                serialPort!!.setParams(9600, 8, 1, 0) //остальные параметры стандартные
+                serialPort!!.setParams(2000000, 8, 1, 0) //остальные параметры стандартные
                 //слушатель порта для приема сообщений от ардуино
                 serialPort!!.addEventListener { event ->
                     if (event.isRXCHAR()) { // если есть данные для приема
@@ -71,10 +71,10 @@ fun createGUI() {
                                 }
                             }
                             val value = strVal.reversed().toByte();
-                            println("strVal = $value")
                             val strCMD = "SoundVolumeView.exe /SetVolume \"chrome.exe\" $value"
 //            println("cmd = $strCMD")
                             runCMD(strCMD)
+                            println("strVal = $value")
 
                         } catch (ex: SerialPortException) { //для обработки возможных ошибок
                             println(ex)
