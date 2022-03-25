@@ -14,6 +14,7 @@ fun main(){
 //    SoundVolumeView.exe /SetVolume "chrome.exe" 75
     runCMD("PWD")
     runCMD("dir")
+    //todo SoundVolumeView.exe /sjson 2.txt - сделать разбор json файла
     createGUI()
 }
 
